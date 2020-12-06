@@ -63,6 +63,7 @@ class ViewController: UIViewController {
                     labelResult.text = "Zero has won"
                     
                 }
+                disableButton()
                 // End game
                 playButton.isHidden = false //btn appear
                 labelResult.isHidden = false
@@ -85,10 +86,26 @@ class ViewController: UIViewController {
         
         
     }
+    func disableButton()
+       {
+           for tag in 1...9        {
+               let btnTemp = self.view.viewWithTag(tag) as! UIButton;
+               btnTemp.isEnabled = false;
+           }
+       }
+       
+ func enableButton()
+       {
+           for tag in 1...9        {
+               let btnTemp = self.view.viewWithTag(tag) as! UIButton;
+               btnTemp.isEnabled = true;
+           }
+       }
     
     // PlayAgain clicked=> reinitialize the status of each buttons , set gameOn to true,setImage of each button  to nil
     
     @IBAction func playAgain(_ sender: AnyObject) {
+        enableButton()
         gameStatus = [0,0,0,0,0,0,0,0,0] // remettre le status de chaque boutton à 0(non cliqué)
         gameOn = true
         activePlayer = 1
